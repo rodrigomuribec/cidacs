@@ -1,4 +1,4 @@
-# Template for internal projects within CIDACS (Rodrig)
+# Template for internal projects within CIDACS (ex.Rodrigo)
 
 
 
