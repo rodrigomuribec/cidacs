@@ -1,25 +1,27 @@
 ---
 title: "The title"
-date: "`r format(Sys.time(), '%d %B, %Y' )`"
-lang: en
-author: author name
-abstract: This is an abstract
-number-sections: true
+author: "author name"
+date: '`r format(Sys.time(), '%d %B, %Y' )`'
 output:
+  html_document:
+    toc: yes
+    df_print: paged
   html_notebook:
     code_folding: hide
     highlight: zenburn
     theme: flatly
     toc: yes
     toc_float: yes
-    df_print: paged    
+    df_print: paged
     code_downloading: yes
-# Bibliography
-# bibliography: "Y:/Projects/Name/doc/library.bib"
+abstract: This is an abstract
+number-sections: yes
+lang: en
 ---
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+
 
 set.seed(42)
 setwd(here::here()) # needed as we are in /src, in linux here() should be used

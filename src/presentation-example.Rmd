@@ -1,23 +1,25 @@
 ---
-title: Work Schedule 
-subtitle: Project subtitle
-author:
-- Me^[Post Doc | Center of Data and Knowledge Integration for Health (CIDACS) | Salvador | Brasil] 
-date: \today
+title: "Work Schedule"
+author: Me^[Post Doc | Center of Data and Knowledge Integration for Health (CIDACS)
+  | Salvador | Brasil]
+date: "\today"
+output:
+  beamer_presentation:
+    template: style/template.tex
+  slidy_presentation: default
+  ioslides_presentation: default
 institute: Center of Data and Knowledge Integration for Health (CIDACS)
-titlegraphic: "./style/title.png"
+titlegraphic: ./style/title.png
 csl: style/chicago-fullnote-bibliography.csl
-suppress-bibliography: true
+suppress-bibliography: yes
 bibliography: /home/luis/Documents/library.bib
 lang: en-AU
-output: 
-  beamer_presentation:
-    template: style/template.tex 
-classoption: "aspectratio=169"
+subtitle: Project subtitle
+classoption: aspectratio=169
 header-includes: |
- \usepackage{navigator}
- \embeddedfile{project}{presentation-example.Rmd}
-  \usepackage{roboto}
+  \usepackage{navigator}
+  \embeddedfile{project}{presentation-example.Rmd}
+   \usepackage{roboto}
 ---
 
 
