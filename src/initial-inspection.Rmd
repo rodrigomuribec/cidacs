@@ -1,6 +1,6 @@
 ---
 title: "Relatório Rodrigo Exemplo"
-author: "Rodrigo Lins Rodriguess"
+author: "Rodrigo Lins Rodriguess3"
 date: "xxxx"
 output:
   html_document:
