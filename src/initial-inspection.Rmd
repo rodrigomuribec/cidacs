@@ -1,11 +1,10 @@
 ---
 title: "The title"
 author: "author name"
-date: '`r format(Sys.time(), '%d %B, %Y' )`'
+date: "xxxx"
 output:
-  html_document:
+  word_document:
     toc: yes
-    df_print: paged
   html_notebook:
     code_folding: hide
     highlight: zenburn
@@ -14,6 +13,11 @@ output:
     toc_float: yes
     df_print: paged
     code_downloading: yes
+  html_document:
+    toc: yes
+    df_print: paged
+  pdf_document:
+    toc: yes
 abstract: This is an abstract
 number-sections: yes
 lang: en

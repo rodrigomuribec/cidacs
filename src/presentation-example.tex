@@ -1,0 +1,291 @@
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{longtable,booktabs}
+\usepackage[font={footnotesize}]{caption}
+% These lines are needed to make table captions work with longtable:
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+
+% Comment these out if you don't want a slide with just the
+% part/section/subsection/subsubsection title:
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \let\insertsectionnumber\relax
+  \let\sectionname\relax
+  \frame{\sectionpage}
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\date{}
+
+%% Here's everything I added.
+%%--------------------------
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{hyperref}
+% \usepackage[font={footnotesize}]{caption}
+\usepackage[normalem]{ulem}
+\usepackage{etoolbox}
+\usepackage{wasysym}
+
+
+% Get rid of navigation symbols.
+%-------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+% Optional institute tags and titlegraphic.
+% Do feel free to change the titlegraphic if you don't want it as a Markdown field.
+%----------------------------------------------------------------------------------
+
+
+% \titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}} % <-- if you want to know what this looks like without it as a Markdown field.
+% -----------------------------------------------------------------------------------------------------
+
+
+% Some additional title page adjustments.
+%----------------------------------------
+% \setbeamertemplate{title page}[empty]
+
+\defbeamertemplate{background canvas}{body}{%
+  \includegraphics[width=\paperwidth,height=\paperheight]{style/body_page.png}
+}
+
+\BeforeBeginEnvironment{frame}{%
+  \setbeamertemplate{background canvas}[body]%
+}
+
+\makeatletter
+\define@key{beamerframe}{body}[true]{%
+  \setbeamertemplate{background canvas}[body]%
+}
+\makeatother
+%\date{}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamerfont*{title}{size=\huge}
+% \setbeamercovered{transparent}
+
+\setbeamercolor{itemize item}{fg=orange}
+\setbeamercolor{itemize subitem}{fg=orange}
+\setbeamercolor{itemize subsubitem}{fg=orange}
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{itemize subsubitem}[triangle]
+
+\definecolor{cidacsred}{HTML}{761514}
+\setbeamercolor{frametitle}{fg=cidacsred}
+\setbeamercolor{local structure}{fg=cidacsred}
+% \setbeamercolor{footline}{fg=orange!50, bg=white}
+\setbeamercolor{titlelike}{fg=cidacsred}
+\setbeamercolor{footnote}{bg=white}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{block title}{fg=orange!70!black, bg=white}
+
+\let\Tiny=\tiny
+
+
+% Sections and subsections should not get their own damn slide.
+%--------------------------------------------------------------
+\AtBeginPart{}
+\AtBeginSection{}
+\AtBeginSubsection{}
+\AtBeginSubsubsection{}
+
+% Suppress some of Markdown's weird default vertical spacing.
+%------------------------------------------------------------
+\setlength{\emergencystretch}{0em}  % prevent overfull lines
+\setlength{\parskip}{0pt}
+
+
+% Progression bar at the bottom
+%--------------------------------------------------
+\makeatletter
+\addtobeamertemplate{footline}{%
+  \color{cidacsred}% to color the progressbar
+  \hspace*{-\beamer@leftmargin}%
+  \rule{\beamer@leftmargin}{2pt}%
+  \rlap{\rule{\dimexpr
+      \beamer@startpageofframe\dimexpr
+      \beamer@rightmargin+\textwidth\relax/\beamer@endpageofdocument}{1pt}}
+  % next 'empty' line is mandatory!
+  % \vspace{0\baselineskip}
+  {}
+}
+
+
+% \AtBeginDocument{%
+%   \letcs\oig{@orig\string\includegraphics}%
+%   \renewcommand<>\includegraphics[2][]{%
+%     \only#3{%
+%       {\centering\oig[{#1}]{#2}\par}%
+%     }%
+%   }%
+% }
+
+% I think I've moved to xelatex now. Here's some stuff for that.
+% --------------------------------------------------------------
+% I could customize/generalize this more but the truth is it works for my circumstances.
+
+\ifxetex
+\setbeamerfont{title}{family=\fontspec{serif}}
+\setbeamerfont{frametitle}{family=\fontspec{serif}}
+% \usepackage[font=small,skip=0pt]{caption}
+ \else
+ \fi
+
+
+% Okay, and begin the actual document...
+
+\begin{document}
+
+
+
+
+\begin{frame}
+\begin{longtable}[]{@{}l@{}}
+\toprule
+\endhead
+title: ``Work Schedule'' \\
+author: Me\^{}{[}Post Doc \textbar{} Center of Data and Knowledge
+Integration for Health (CIDACS) \\
+\textbar{} Salvador \textbar{} Brasil{]} \\
+date: ``\today'' \\
+output: \\
+beamer\_presentation: \\
+template: style/template.tex \\
+ioslides\_presentation: default \\
+slidy\_presentation: default \\
+institute: Center of Data and Knowledge Integration for Health
+(CIDACS) \\
+titlegraphic: ./style/title.png \\
+csl: style/chicago-fullnote-bibliography.csl \\
+suppress-bibliography: yes \\
+bibliography: /home/luis/Documents/library.bib \\
+lang: en-AU \\
+subtitle: Project subtitle \\
+classoption: aspectratio=169 \\
+header-includes: \textbar{} \\
+ \\
+\embeddedfile{project}{presentation-example.Rmd} \\
+ \\
+\bottomrule
+\end{longtable}
+
+\begin{block}{First slide}
+\protect\hypertarget{first-slide}{}
+\begin{itemize}
+\tightlist
+\item
+  Occurs in all ages
+
+  \begin{itemize}
+  \tightlist
+  \item
+    More common in the elderly
+  \end{itemize}
+\item
+  Example of citation (\textbf{machadoEffectsCOVID19Anxiety2020?}).
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Sections are not supported}
+\protect\hypertarget{sections-are-not-supported}{}
+\begin{block}{Data set - CIDACS}
+\protect\hypertarget{data-set---cidacs}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{block}{A block}
+\protect\hypertarget{a-block}{}
+\begin{itemize}
+\tightlist
+\item
+  Column example
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\tiny
+
+Dataset coverage from 2001 to 2017
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Work schedule}
+\protect\hypertarget{work-schedule}{}
+\end{block}
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+\protect\hypertarget{acknowledgements}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{block}{Team}
+\protect\hypertarget{team}{}
+\begin{itemize}
+\item
+  Prof X
+\item
+  Prof Y
+\item
+  grant no 123
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Contact}
+\protect\hypertarget{contact}{}
+\begin{center}\includegraphics[width=0.8\linewidth]{../graphs/qr-twitter-1} \end{center}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\end{document}
+
+
+% \embeddedfile{projeto}{../../presentation.zip}

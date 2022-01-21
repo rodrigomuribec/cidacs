@@ -4,15 +4,15 @@ author: Me^[Post Doc | Center of Data and Knowledge Integration for Health (CIDA
   | Salvador | Brasil]
 date: "\today"
 output:
+  ioslides_presentation: default
   beamer_presentation:
     template: style/template.tex
   slidy_presentation: default
-  ioslides_presentation: default
 institute: Center of Data and Knowledge Integration for Health (CIDACS)
 titlegraphic: ./style/title.png
 csl: style/chicago-fullnote-bibliography.csl
 suppress-bibliography: yes
-bibliography: /home/luis/Documents/library.bib
+#bibliography: /home/luis/Documents/library.bib #precisa do arquivo .bib
 lang: en-AU
 subtitle: Project subtitle
 classoption: aspectratio=169
