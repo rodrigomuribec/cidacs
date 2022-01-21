@@ -1,0 +1,140 @@
+---
+title: "Relatório Rodrigo Exemplo"
+author: "Rodrigo Lins Rodrigues"
+date: "xxxx"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  html_notebook:
+    code_folding: hide
+    highlight: zenburn
+    theme: flatly
+    toc: yes
+    toc_float: yes
+    df_print: paged
+    code_downloading: yes
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
+abstract: This is an abstract
+number-sections: yes
+lang: en
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+
+set.seed(42)
+setwd(here::here()) # needed as we are in /src, in linux here() should be used
+
+# Loading the project
+ProjectTemplate::load.project()
+pclean()
+
+# R options
+options(
+  digits = 2, # Only two decimal digits
+  scipen = 999 # Remove scientific notation for pretty printing
+)
+
+# Knitr options
+knitr::opts_chunk$set(
+  comment = NA, # remove comment symbol
+  cache.path = "../cache/", # where should I save cache?
+  fig.path = "../graphs/", # where should I save figures?
+  echo = T, # dont echo by default
+  cache = F, # dont cache by default
+  fig.width = 10, # setting the best witdth for figures
+  fig.height = 7, # best height
+  dpi = 300, # high dpi for publication quality
+  error = F,
+  warning = F
+)
+```
+
+
+# Introduction
+
+Some review of the subject and the list of hypotheses discussed at meetings.
+
+# Table 1
+
+
+```{r}
+diamonds %>%
+  tableone::CreateTableOne(
+    data = .,
+    includeNA = T,
+    # strata = "visit",
+    addOverall = T
+  ) %>%
+  tableone::kableone()
+```
+
+
+# Basic descriptive characteristics
+
+## Distribution of age by sex
+
+```{r age-by-sex, results="hide"}
+diamonds %>%
+  ggplot(aes(price, fill = color)) +
+  geom_density(alpha = .3) +
+  labs(
+    title = "Age Male x Female", x = "Age",
+    y = "Density"
+  ) +
+  theme_linedraw()
+```
+
+
+
+## Missing and categories and distribution in one picture
+```{r tabplot, fig.cap="Missings, categories and distributions"}
+tabplot::tableplot(diamonds)
+```
+
+## Any correlated?
+
+
+```{r scatter}
+diamonds %>%
+  select_if(is_numeric) %>%
+  psych::pairs.panels(.,
+    method = "pearson", # correlation method
+    hist.col = "#00AFBB",
+    density = TRUE, # show density plots
+    ellipses = TRUE # show correlation ellipses
+  )
+```
+
+
+## More info on distribution with boxplots
+
+```{r boxplots}
+diamonds %>%
+  select_if(is.numeric) %>%
+  gather(key = "ind", value = "values") %>%
+  ggplot(aes(x = ind, y = values)) +
+  geom_boxplot() +
+  coord_flip() +
+  theme_minimal() +
+  scale_fill_grey()
+```
+
+
+
+# System information
+
+```{r}
+project.info
+```
+
+```{r}
+sessionInfo()
+```
+
+# References

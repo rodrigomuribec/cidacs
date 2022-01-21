@@ -1,10 +1,11 @@
 ---
-title: "The title"
-author: "author name"
+title: "Relatório Rodrigo Exemplo"
+author: "Rodrigo Lins Rodrigues"
 date: "xxxx"
 output:
-  word_document:
+  html_document:
     toc: yes
+    df_print: paged
   html_notebook:
     code_folding: hide
     highlight: zenburn
@@ -13,9 +14,8 @@ output:
     toc_float: yes
     df_print: paged
     code_downloading: yes
-  html_document:
+  word_document:
     toc: yes
-    df_print: paged
   pdf_document:
     toc: yes
 abstract: This is an abstract
@@ -84,7 +84,7 @@ diamonds %>%
   ggplot(aes(price, fill = color)) +
   geom_density(alpha = .3) +
   labs(
-    title = "Age Male x Female", x = "Age",
+    title = "Age Male x Femalee", x = "Age",
     y = "Density"
   ) +
   theme_linedraw()
