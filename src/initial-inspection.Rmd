@@ -84,7 +84,7 @@ diamonds %>%
   ggplot(aes(price, fill = color)) +
   geom_density(alpha = .3) +
   labs(
-    title = "Age Male x Femalee", x = "Age",
+    title = "Age Male x Female", x = "Age",
     y = "Density"
   ) +
   theme_linedraw()
